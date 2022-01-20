@@ -1,6 +1,3 @@
-from lib2to3.pytree import convert
-
-
 open_file = open('CupcakeInvoices.csv')
 
 for line in open_file:
@@ -21,7 +18,7 @@ for line in open_file:
     cupcake_number = float(values[3])
     cupcake_price = float(values[4])
     invoice_total = cupcake_number * cupcake_price
-    print(format(invoice_total, '.2f'))
+    print(round(invoice_total, 2))
 
 open_file.seek(0)
 
@@ -35,6 +32,6 @@ for line in open_file:
     cupcake_invoice = cupcake_number * cupcake_price
     total_invoice += cupcake_invoice
 
-grand_total = format(total_invoice, '.2f')
+grand_total = round(total_invoice, 2)
 
 print(f'The grand total is ${grand_total}') #used dollar sign to appear in terminal
