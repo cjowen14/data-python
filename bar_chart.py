@@ -10,6 +10,8 @@ chocolate_invoice = 0
 vanilla_invoice = 0
 strawberry_invoice = 0
 
+# Get data for number of invoices
+
 for line in open_file:
     line = line.strip()
     values = line.split(",")
@@ -21,6 +23,8 @@ for line in open_file:
         strawberry_number += 1 
 
 open_file.seek(0)
+
+# Get data for total invoices
 
 for line in  open_file:
     line = line.strip()
@@ -48,6 +52,7 @@ total_strawberry = round(strawberry_invoice, 2)
 # print(strawberry_number)
 
 
+#plot Number of invoices graph
 
 numbers = [chocolate_number, vanilla_number, strawberry_number]
 labels = ['Chocolate', 'Vanilla', 'Strawberry']
@@ -57,6 +62,8 @@ pos = list(range(3))
 def cupcakes_sold(numbers, labels, pos):
     plt.bar(pos, numbers, color='green')
     plt.xticks(ticks=pos, labels=labels)
+    plt.xlabel('Flavors')
+    plt.ylabel('Number of Invoices')
     plt.show()
 
 cupcakes_sold(numbers, labels, pos)
@@ -64,6 +71,7 @@ cupcakes_sold(numbers, labels, pos)
 open_file.seek(0)
 
 
+#plot Invoice amounts graph
 
 invoice_numbers = [total_chocolate, total_vanilla, total_strawberry]
 # print(invoice_numbers)
@@ -71,6 +79,10 @@ invoice_numbers = [total_chocolate, total_vanilla, total_strawberry]
 def cupcakes_invoice(numbers, labels, pos):
     plt.bar(pos, numbers, color='blue')
     plt.xticks(ticks=pos, labels=labels)
+    plt.xlabel('Flavors')
+    plt.ylabel('Invoice Amount in Dollars')
     plt.show()
 
 cupcakes_invoice(invoice_numbers, labels, pos)
+
+open_file.close()
